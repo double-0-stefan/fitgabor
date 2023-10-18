@@ -10,9 +10,9 @@ def gen_gabor(theta, sigma, Lambda, psi, gamma, center, image_size):
     sigma_y = sigma / gamma
 
     ny, nx = image_size
-    (y, x) = torch.meshgrid(torch.linspace(-1, 1, ny), torch.linspace(-1, 1, nx))
-    x = x.to(device)
-    y = y.to(device)
+    (y, x) = torch.meshgrid(torch.linspace(-1, 1, ny).to(device), torch.linspace(-1, 1, nx)).to(device)
+    x = x.unsqueeze(0)
+    y = y.unsqueeze(0)
     # print(x)
     # print(y)
     # print(theta)
