@@ -40,12 +40,12 @@ class GaborGenerator(nn.Module):
         """
         
         super().__init__()
-        self.theta = nn.Parameter(torch.rand(1) * 4*torch.pi - 2*torch.pi)
-        self.sigma = nn.Parameter(torch.rand(1) * .05 + .15, requires_grad=False)
-        self.Lambda = nn.Parameter(torch.rand(1) * .2 + .5)
-        self.psi = nn.Parameter(torch.rand(1)*torch.pi/2) 
-        self.gamma = nn.Parameter(torch.zeros(1)+1., requires_grad=False)
-        self.center = nn.Parameter(torch.tensor([0., 0.]))
+        self.theta = nn.Parameter(torch.rand(1) * 4*torch.pi - 2*torch.pi).to(device)
+        self.sigma = nn.Parameter(torch.rand(1) * .05 + .15).to(device)
+        self.Lambda = nn.Parameter(torch.rand(1) * .2 + .5).to(device)
+        self.psi = nn.Parameter(torch.rand(1)*torch.pi/2).to(device) 
+        self.gamma = nn.Parameter(torch.zeros(1)+1.).to(device)
+        self.center = nn.Parameter(torch.tensor([0., 0.])).to(device)
         self.image_size = image_size
     
     def forward(self):
