@@ -1,5 +1,6 @@
 import torch
 from torch import nn
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 torch.pi = torch.acos(torch.zeros(1)).item() * 2 # which is 3.1415927410125732
 
@@ -9,7 +10,7 @@ def gen_gabor(theta, sigma, Lambda, psi, gamma, center, image_size):
     sigma_y = sigma / gamma
 
     ny, nx = image_size
-    (y, x) = torch.meshgrid(torch.linspace(-1, 1, ny), torch.linspace(-1, 1, nx))
+    (y, x) = torch.meshgrid(torch.linspace(-1, 1, ny), torch.linspace(-1, 1, nx)).to(device)
 
     # Rotation
     x_theta = (x - center[0]) * torch.cos(theta) + (y - center[1]) * torch.sin(theta)
