@@ -50,9 +50,9 @@ class GaborGenerator(nn.Module):
     
     def forward(self):
         # clip values in reasonable range
-        self.theta.data.clamp_(-2*torch.pi, 2*torch.pi)
-        self.sigma.data.clamp_(.13, 1)
-        self.Lambda.data.clamp_(.2, 2.)
+        # self.theta.data.clamp_(-2*torch.pi, 2*torch.pi)
+        # self.sigma.data.clamp_(.13, 1)
+        # self.Lambda.data.clamp_(.2, 2.)
         # self.center.data.clamp_(-.8, .8)
         gb = gen_gabor(self.theta, self.sigma, self.Lambda, self.psi, self.gamma, self.center, self.image_size)
         return gb.view(1, 1, *self.image_size)
