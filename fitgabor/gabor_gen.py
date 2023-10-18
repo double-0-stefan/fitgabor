@@ -13,9 +13,9 @@ def gen_gabor(theta, sigma, Lambda, psi, gamma, center, image_size):
     (y, x) = torch.meshgrid(torch.linspace(-1, 1, ny), torch.linspace(-1, 1, nx))
     x = x.to(device)
     y = y.to(device)
-    print(x)
-    print(y)
-    print(theta)
+    # print(x)
+    # print(y)
+    # print(theta)
     # Rotation
     x_theta = (x - center[0]) * torch.cos(theta) + (y - center[1]) * torch.sin(theta)
     y_theta = -(x - center[0]) * torch.sin(theta) + (y - center[1]) * torch.cos(theta)
