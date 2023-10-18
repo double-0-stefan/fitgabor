@@ -47,7 +47,7 @@ class GaborGenerator(nn.Module):
         self.Lambda = nn.Parameter(2*torch.ones(3,1))# * .2 + .5).to(device))
         self.psi = nn.Parameter(torch.rand(3,1))#*torch.pi/2).to(device)) 
         self.gamma = nn.Parameter(torch.ones(3,1))#+1.).to(device))
-        self.center = nn.Parameter((torch.zeros(3,2))
+        self.center = nn.Parameter(torch.zeros(3,2))
         self.image_size = image_size
     
     def forward(self):
