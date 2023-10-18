@@ -17,8 +17,8 @@ def gen_gabor(theta, sigma, Lambda, psi, gamma, center, image_size):
     # print(y)
     # print(theta)
     # Rotation
-    x_theta = (x - center[0]) * torch.cos(theta) + (y - center[1]) * torch.sin(theta)
-    y_theta = -(x - center[0]) * torch.sin(theta) + (y - center[1]) * torch.cos(theta)
+    x_theta = (x - center[:,0].unsqueeze(-1)) * torch.cos(theta) + (y - center[:,1].unsqueeze(-1)) * torch.sin(theta)
+    y_theta = -(x - center[:,0]) * torch.sin(theta) + (y - center[:,1]) * torch.cos(theta)
 
     gb = torch.exp(-.5 * (x_theta ** 2 / sigma_x ** 2 + y_theta ** 2 / sigma_y ** 2)) * torch.cos(2 * torch.pi / Lambda * x_theta + psi)
     
